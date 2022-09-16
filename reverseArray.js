@@ -4,26 +4,39 @@
 const reverseArray = function (array) {
 	// Create a new array to send items.
 	const newArray = [];
-	// Try using .push() to send "first" to "newArray"
-	newArray.push(array[0]);
+
+	//#region : Sending each item one by one from one array to another array (WORKING).
+	// for (let i = 0; i < array.length; i++) { //<----- REMOVE COMMENT TO ACTIVATE
+	// newArray.push(array[i])};
+	// how to reorder this array:
+	// - rearrange the for-loop, where i = array.length; i >= array.length; i-- ??
+	//#endregion
+	//#region : this works
+	// it finds the last element of the array and places it in the front of a new array. Different approach than the one envisioned in the comments below. Could try to implement the original pseudocode, but this already works....
+	//#endregion
+	for (let i = array.length - 1; i >= 0; i--) {
+		newArray.push(array[i]);
+	}
+
+	//#region : initial .push(test) for functionality
+	// Using .push() to send array[0] to "newArray"
+	//newArray.push(array[0]);  // <----- REMOVE COMMENT TO ACTIVATE
+	//#endregion
+	//#region : array[o] to array.length[last]
+	//    - take the first item in the array and place it at the end of a new array.
+	//    - take the second item in the array and do the same.
+	//    - take the third item in the array and do the same.
+	//#endregion
 
 	return newArray; // return contents of newArray so that it can log to console when called below.
 };
 
 //*************************************
-// example of passing an array into a function and calling the first item in the array.
+// example array...
 const fruits = ['banana', 'melon', 'apple'];
 
+//    Pass an array into the new function.
 console.log(reverseArray(fruits));
-
-//logic of the function:
-//    - pass an array into the new function.
-//    - take the first item in the array and place it at the end of a new array.
-//    - take the second item in the array and do the same.
-//    - take the third item in the array and do the same.
-
-//Calling the function
-//    console.log(reverseArray())
 
 //#region : Concerns
 /*Above, I have hard-coded a variable, 'first' to denote the first item of an array. I can hard code 'second', 'third', etc. but I do not know how many items there may be in an array. If someone passes an array into my function with a greater number of items than I have hardcoded variables, the function will trip up.
